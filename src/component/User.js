@@ -6,10 +6,18 @@ class User extends Component {
         name:"bilgi yok",
         departman:"bilgi yok",
         salary:"bilgi yok"
+}
+constructor(props){
+    super(props);
+
+    this.state={
+        isVisiable : false
     }
-    render(props) {
+}
+render() {
         //destrunting
         const{name,departman,salary}=this.props;
+        const{isVisiable}=this.state;
         return (
             <div className = "col-md-8 mb-4">
                 <div className="card">
@@ -17,10 +25,13 @@ class User extends Component {
                         <h4 className="d-inline">{name}</h4>
                         <i className="far fa-trash-alt" style= {{cursor:"pointer"}}></i>
                     </div>
-                    <div className="card-body">
+                    {isVisiable ? <div className="card-body">
                         <p className="card-text">Maaş: {salary}</p>
                         <p className="card-text">Departman: {departman}</p>
-                    </div>
+                        
+                    </div> : null
+                    }
+                    
                 </div>
                 
             </div>
